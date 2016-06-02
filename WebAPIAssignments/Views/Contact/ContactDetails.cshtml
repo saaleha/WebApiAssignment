@@ -1,0 +1,55 @@
+﻿@model WebAPIAssignments.ViewModel.ContactViewModel
+
+@{
+    ViewBag.Title = "ContactDetails";
+}
+
+<h2>ContactDetails</h2>
+<table>
+    <thead>
+        @if (Model.Details.Any())
+        {
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+
+                <th>Delete</th>
+            </tr>
+        }
+    </thead>
+    <tbody>
+        @if (Model.Details.Any())
+        {
+            foreach (var contact in Model.Details)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => contact.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => contact.Email)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(model=>contact.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => contact.Address)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = contact.Id })
+                </td>
+            </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>No Contacts</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.Partial("_Create", Model.NewContact)

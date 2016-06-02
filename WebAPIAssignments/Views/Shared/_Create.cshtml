@@ -1,0 +1,18 @@
+﻿@model WebAPIAssignments.Models.ContactModel
+
+@{
+    ViewBag.Title = "_Create";
+}
+
+<h2>_Create</h2>
+@using (Html.BeginForm("Create", "Contact"))
+ {
+     @Html.ValidationSummary(false)
+     
+     <fieldset>
+         <legend>Contact</legend>
+         @Html.EditorForModel(Model)
+     </fieldset>
+     
+     <input id="btnCreateContact" type="submit" value="Create Contact"/>
+ }
